@@ -2,6 +2,7 @@ const libraryContainer = document.getElementById('library-container');
 const addBookBtn = document.getElementById('add-btn');
 const modal = document.getElementById('add-modal');
 const span = document.getElementsByClassName("close")[0];
+const form = document.getElementById('add-form');
 const submit = document.getElementById('submit');
 
 addBookBtn.addEventListener("click", openModal);
@@ -10,9 +11,7 @@ submit.addEventListener("click", getNewBook);
 
 let myLibrary = [];
 const myBook = new Book('Gospel According to Jesus', 'John Macarthur', '500');
-addBookToLibrary(myBook);
-console.log(Object.values(myBook));
-console.log(myLibrary);
+
 /* Open/Close Modal */
 function openModal() {
     modal.style.display = "block";
@@ -50,6 +49,9 @@ function getNewBook(e) {
     const newBook = addBookFromInput();
     addBookToLibrary(newBook);
     console.log(Object.values(newBook));
+    displayBook();
+    form.reset();
+    modal.style.display = "none";
 }
 
 function addBookToLibrary(book) {
@@ -58,11 +60,6 @@ function addBookToLibrary(book) {
     console.log(myLibrary);
 }
 
-function iterateLib() {
-    for(let books in myLibrary) {
-        console.log(books.title);
-    }
-}
 
 function Book(title, author, pages) {
     this.title = title;
