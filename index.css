@@ -21,7 +21,7 @@
 }
 
 #library-container {
-    display: grid;
+    display: grid;  
     background-color: blue;
     grid-row:2/3;
     grid-template-columns: repeat(auto-fill, minmax(430px, 1fr));

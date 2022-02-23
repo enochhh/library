@@ -5,21 +5,27 @@ const span = document.getElementsByClassName("close")[0];
 const form = document.getElementById('add-form');
 const submit = document.getElementById('submit');
 
+
 addBookBtn.addEventListener("click", openModal);
 span.addEventListener("click", closeModal);
 submit.addEventListener("click", getNewBook);
 
 let myLibrary = [];
-const myBook = new Book('Gospel According to Jesus', 'John Macarthur', '500');
-myLibrary.push(myBook);
-myLibrary.push(myBook);
-myLibrary.push(myBook);
-myLibrary.push(myBook);
-myLibrary.push(myBook);
-myLibrary.push(myBook);
-myLibrary.push(myBook);
-myLibrary.push(myBook);
-myLibrary.push(myBook);
+const myBook1 = new Book('Gospel According to Jesus', 'John Macarthur', '500');
+const myBook2 = new Book('hi', 'dawg', '500');
+const myBook3 = new Book('bye', 'cat', '200');
+
+myLibrary.push(myBook1);
+myLibrary.push(myBook2);
+myLibrary.push(myBook3);
+// myLibrary.push(myBook);
+// myLibrary.push(myBook);
+// myLibrary.push(myBook);
+// myLibrary.push(myBook);
+// myLibrary.push(myBook);
+// myLibrary.push(myBook);
+// myLibrary.push(myBook);
+// myLibrary.push(myBook);
 displayBook();
 
 /* Open/Close Modal */
@@ -85,6 +91,12 @@ function displayBook() {
     }
 }
 
+function removeBook(title) {
+    myLibrary = myLibrary.filter((book) => book.title !== title);
+    displayBook();
+    console.log("removed"); 
+}
+
 function createCard(book) {
     const bookCard = document.createElement('div');
     const title = document.createElement('p');
@@ -92,6 +104,9 @@ function createCard(book) {
     const pages = document.createElement('p');
     const buttonGroup = document.createElement('div');
     const removeBtn = document.createElement('button'); 
+    removeBtn.addEventListener("click", function(e) {
+        removeBook(book.title);
+    })
 
     bookCard.classList.add('library-item');
 
