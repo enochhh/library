@@ -17,17 +17,21 @@
 .header {
     background-color: red;
     grid-row:1/2;
+    min-height: 12rem;
 }
 
 #library-container {
     display: grid;
     background-color: blue;
     grid-row:2/3;
+    grid-template-columns: repeat(auto-fill, minmax(430px, 1fr));
+    grid-template-rows: repeat(auto-fill, 1fr);
 }
 
 .library-item, .book{
-    height: 10rem;
-    width: 10rem;
+    height: 35rem;
+    width: 45rem;
+    margin: 2rem;
     background-color: orange;
 }
 

@@ -11,6 +11,16 @@ submit.addEventListener("click", getNewBook);
 
 let myLibrary = [];
 const myBook = new Book('Gospel According to Jesus', 'John Macarthur', '500');
+myLibrary.push(myBook);
+myLibrary.push(myBook);
+myLibrary.push(myBook);
+myLibrary.push(myBook);
+myLibrary.push(myBook);
+myLibrary.push(myBook);
+myLibrary.push(myBook);
+myLibrary.push(myBook);
+myLibrary.push(myBook);
+displayBook();
 
 /* Open/Close Modal */
 function openModal() {
@@ -69,17 +79,33 @@ function Book(title, author, pages) {
 
 
 function displayBook() {
-    // libraryContainer.innerHTML = "";
+    libraryContainer.innerHTML = "";
     for (let book of myLibrary) {
-        book = document.createElement("div");
-        book.classList.add("book");
-        libraryContainer.appendChild(book).classList.add("library-item");
+        createCard(book);
     }
 }
 
-function clearDisplay(parent) {
-    while(parent.firstChild) {
-        parent.removeChild(parent.firstChild);
-    }
+function createCard(book) {
+    const bookCard = document.createElement('div');
+    const title = document.createElement('p');
+    const author = document.createElement('p');
+    const pages = document.createElement('p');
+    const buttonGroup = document.createElement('div');
+    const removeBtn = document.createElement('button'); 
+
+    bookCard.classList.add('library-item');
+
+    title.textContent = `"${book.title}"`;
+    author.textContent = book.author;
+    pages.textContent = `${book.pages} pages`;
+    removeBtn.textContent = 'Remove';
+
+    bookCard.appendChild(title);
+    bookCard.appendChild(author);
+    bookCard.appendChild(pages);
+    buttonGroup.appendChild(removeBtn);
+    bookCard.appendChild(buttonGroup);
+    libraryContainer.appendChild(bookCard);
 }
+
 
