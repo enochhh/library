@@ -69,10 +69,17 @@ function Book(title, author, pages) {
 
 
 function displayBook() {
+    // libraryContainer.innerHTML = "";
     for (let book of myLibrary) {
         book = document.createElement("div");
         book.classList.add("book");
         libraryContainer.appendChild(book).classList.add("library-item");
+    }
+}
+
+function clearDisplay(parent) {
+    while(parent.firstChild) {
+        parent.removeChild(parent.firstChild);
     }
 }
 
