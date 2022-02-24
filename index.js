@@ -118,11 +118,13 @@ function createCard(book) {
     
     if (book.isRead) {
         readBtn.textContent = 'Read';
-        console.log('this book is read');
+        readBtn.classList.remove('not-read');
+        readBtn.classList.add('is-read');
     }
     else {
         readBtn.textContent = 'Not Read';
-        console.log('not read');
+        readBtn.classList.remove('is-read');
+        readBtn.classList.add('not-read');
     }
 
 
@@ -133,9 +135,13 @@ function createCard(book) {
     readBtn.addEventListener("click", function(e) {
         if (readBtn.textContent =='Read') {
             readBtn.textContent = 'Not Read';
+            readBtn.classList.remove('is-read');
+            readBtn.classList.add('not-read');
         }
         else {
             readBtn.textContent = 'Read';
+            readBtn.classList.remove('not-read');
+            readBtn.classList.add('is-read');
         }
     })
 
