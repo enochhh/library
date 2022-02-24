@@ -13,6 +13,15 @@ submit.addEventListener("click", getNewBook);
 
 let myLibrary = [];
 
+/* Example books */
+const myBook1 = new Book('Gospel According to Jesus', 'John Macarthur', '500');
+const myBook2 = new Book('Lightning Thief', 'Rick Riordan', '400');
+const myBook3 = new Book('Romeo and Juliet', 'William Shakespeare', '200');
+
+myLibrary.push(myBook1);
+myLibrary.push(myBook2);
+myLibrary.push(myBook3);
+
 displayBook();
 
 function Book(title, author, pages, isRead) {
