@@ -14,25 +14,56 @@
     grid-template-rows: 1fr 8fr;
 }
 
+
 .header {
-    background-color: red;
+    background-color: rgb(55, 55, 121);
     grid-row:1/2;
     min-height: 12rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 7rem;
+    padding: 4rem 6rem;
+}
+
+.header-title {
+    margin-top:3rem;
+    color:white;
+    font-weight: 600;
+}
+
+.header-btn {
+    font-size: 2.2rem;
+    height: 5rem;
+    width: 20rem;
+    border: none;
+    border-radius:1.5rem;
+    font-weight:600;
 }
 
 #library-container {
     display: grid;  
-    background-color: blue;
+    background-color: white;
     grid-row:2/3;
     grid-template-columns: repeat(auto-fill, minmax(430px, 1fr));
     grid-template-rows: repeat(auto-fill, 1fr);
+    padding: 4rem 6rem;
+    row-gap: 5rem;
+    column-gap: 3rem;
 }
 
-.library-item, .book{
+.library-item {
     height: 35rem;
-    width: 45rem;
-    margin: 2rem;
-    background-color: orange;
+    width: 40rem;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    font-size: 3rem;
+    align-items: center;
+    justify-content: space-around;
+    border:none;
+    border-radius: 1.5rem;
+    box-shadow:  0 7px 30px -10px rgba(2, 2, 2, 0.945);
 }
 
 .modal {
@@ -41,24 +72,67 @@
     z-index: 1; /* Sit on top */
     left:0;
     top:0;
-    width:100%;
+    width: 100%;
     height:100%;
     overflow:auto;
-    background-color: rgb(0,0,0);
-}
-
-.add-form-container {
-    background-color: white;
-    margin: 15% auto;
-    padding: 2rem;
-    border:.1rem solid orange;
-    width:80%;
+    background-color: rgb(0,0,0,.7);
 }
 
 .close {
-    color: #aaa;
-    float: right;
+    color: white;
+    display:flex;
+    justify-content: end;
     font-size:2.8rem;
+    font-weight:600;
+}
+
+.add-form-container {
+    background-color: rgb(55, 55, 121);
+    margin: 15% auto;
+    padding: 2rem 5rem;
+    border:none;
+    border-radius: 1.5rem;
+    font-size: 2.5rem;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-around;
+    min-height: 60rem;
+    height:40%;
+    min-width: 40rem;
+    width:20%;
+    gap: 3rem;
+}
+
+.form-item {
+    display:flex;
+    justify-content: space-around;
+    color: white;
+}
+
+input {
+    width:100%;
+    padding: 3rem;
+    font-size: 2.2rem;
+    border-radius: 1.5rem;
+    border:none;
+}
+
+::placeholder {
+    /* padding: 2rem; */
+    font-size: 2rem;
+}
+
+#isRead {
+    height: 3rem;
+    width: 3rem;
+}
+
+#submit {
+    width: 30rem;
+    height: 5rem;
+    border:none;
+    border-radius: 1.5rem;
+    font-size:2.2rem;
     font-weight:600;
 }
 
@@ -70,9 +144,26 @@
 }
 
 .is-read {
-    background-color: green;
+    background-color: rgb(114, 201, 114);
+    color:white;
 }
 
 .not-read {
-    background-color: red;
+    background-color: rgb(219, 76, 76);
+    color:white;
+}
+
+.btn-group {
+    display:flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.card-btn {
+    font-size: 2.2rem;
+    width: 30rem;
+    height:5rem;
+    border-radius: 1.5rem;
+    border:none;
+    font-weight: 600;
 }
