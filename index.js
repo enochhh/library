@@ -4,11 +4,13 @@ const modal = document.getElementById('add-modal');
 const span = document.getElementsByClassName("close")[0];
 const form = document.getElementById('add-form');
 const submit = document.getElementById('submit');
+// const read = document.getElementById('isRead');
 
 
 addBookBtn.addEventListener("click", openModal);
 span.addEventListener("click", closeModal);
 submit.addEventListener("click", getNewBook);
+
 
 let myLibrary = [];
 const myBook1 = new Book('Gospel According to Jesus', 'John Macarthur', '500');
@@ -27,6 +29,13 @@ myLibrary.push(myBook3);
 // myLibrary.push(myBook);
 // myLibrary.push(myBook);
 displayBook();
+
+function Book(title, author, pages, isRead) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.isRead = isRead;
+}
 
 /* Open/Close Modal */
 function openModal() {
@@ -57,7 +66,9 @@ function addBookFromInput() {
     const title = document.getElementById('title').value;
     const author = document.getElementById('author').value;
     const pages = document.getElementById('pages').value;
-    return new Book(title, author, pages);
+    const isRead = document.getElementById('isRead').checked; 
+    console.log('READ OR NOT', isRead);
+    return new Book(title, author, pages, isRead);
 }
 
 function getNewBook(e) {
@@ -75,14 +86,6 @@ function addBookToLibrary(book) {
     console.log("book added to library!");
     console.log(myLibrary);
 }
-
-
-function Book(title, author, pages) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-}
-
 
 function displayBook() {
     libraryContainer.innerHTML = "";
@@ -103,10 +106,8 @@ function createCard(book) {
     const author = document.createElement('p');
     const pages = document.createElement('p');
     const buttonGroup = document.createElement('div');
-    const removeBtn = document.createElement('button'); 
-    removeBtn.addEventListener("click", function(e) {
-        removeBook(book.title);
-    })
+    const removeBtn = document.createElement('button');
+    const readBtn = document.createElement('button'); 
 
     bookCard.classList.add('library-item');
 
@@ -114,11 +115,35 @@ function createCard(book) {
     author.textContent = book.author;
     pages.textContent = `${book.pages} pages`;
     removeBtn.textContent = 'Remove';
+    
+    if (book.isRead) {
+        readBtn.textContent = 'Read';
+        console.log('this book is read');
+    }
+    else {
+        readBtn.textContent = 'Not Read';
+        console.log('not read');
+    }
+
+
+    removeBtn.addEventListener("click", function(e) {
+        removeBook(book.title);
+    })
+
+    readBtn.addEventListener("click", function(e) {
+        if (readBtn.textContent =='Read') {
+            readBtn.textContent = 'Not Read';
+        }
+        else {
+            readBtn.textContent = 'Read';
+        }
+    })
 
     bookCard.appendChild(title);
     bookCard.appendChild(author);
     bookCard.appendChild(pages);
     buttonGroup.appendChild(removeBtn);
+    buttonGroup.appendChild(readBtn);
     bookCard.appendChild(buttonGroup);
     libraryContainer.appendChild(bookCard);
 }

@@ -68,3 +68,11 @@
   text-decoration: none;
   cursor: pointer;
 }
+
+.is-read {
+    background-color: green;
+}
+
+.not-read {
+    background-color: red;
+}
